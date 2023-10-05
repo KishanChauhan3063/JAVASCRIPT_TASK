@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This is basic example in Javascript</title>
+    <style>
+      body {
+        text-align: center;
+        margin-top: 15%;
+        font-size: 30px;
+      }
+      input {
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <label class="label">Enter your name </label>
+    <input type="text" id="name" onfocus="focusFunction()" oninput="inputFunction()"> 
+    <p id="p"></p>
+  </body>
+
+  <script>
+    /*  JavaScript Input Event  */
+		
+    function focusFunction(){
+                document.getElementById("name").style.background="pink"
+            }
+            function inputFunction(){
+                var text = document.getElementById("name").value;
+                document.getElementById("p").innerHTML=text;
+            }
+  </script>
+</html>

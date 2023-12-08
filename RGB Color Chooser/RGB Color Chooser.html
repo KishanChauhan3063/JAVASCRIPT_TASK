@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RGB Color Chooser</title>
+<head>
+    <style>
+      #color-chooser {
+        width: 500px;
+        margin: 0 auto;
+        padding: 100px;
+        text-align: center;
+      }
+
+      #color-preview {
+        width: 100%;
+        height: 100px;
+        margin: 0 auto;
+        background-color: rgb(0, 0, 0);
+      }
+
+      #color-values {
+        margin-top: 10px;
+      }
+
+      .input-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+input[type="range"] {
+  -webkit-appearance: none; 
+  width: 50%;
+  height: 20px;
+  float: right;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 17px;
+  background-color: #fff;
+  border-radius: 50%;
+  /* box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3); */
+}
+
+      #red {
+        background: linear-gradient(to right, #000, #f00);
+      }
+
+      #green {
+        background: linear-gradient(to right, #000, #0f0);
+      }
+
+      #blue {
+        background: linear-gradient(to right, #000, #00f);
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="color-chooser">
+      <h2>RGB Color Chooser</h2>
+
+      <div class="input-container">
+        <label for="red">Red:</label>
+        <input type="range" id="red" min="0" max="255" value="0" />
+        <input type="text" id="red-value" value="0" />
+      </div>
+
+      <div class="input-container">
+        <label for="green">Green:</label>
+        <input type="range" id="green" min="0" max="255" value="0" />
+        <input type="text" id="green-value" value="0" />
+      </div>
+
+      <div class="input-container">
+        <label for="blue">Blue:</label>
+        <input type="range" id="blue" min="0" max="255" value="0" />
+        <input type="text" id="blue-value" value="0" />
+      </div>
+
+      <div id="color-preview"></div>
+      <div id="color-values">RGB: <span id="rgb-values">0, 0, 0</span></div>
+    </div>
+    <script>
+      const redInput = document.getElementById("red");
+      const greenInput = document.getElementById("green");
+      const blueInput = document.getElementById("blue");
+      const redValueInput = document.getElementById("red-value");
+      const greenValueInput = document.getElementById("green-value");
+      const blueValueInput = document.getElementById("blue-value");
+      const colorPreview = document.getElementById("color-preview");
+      const rgbValues = document.getElementById("rgb-values");
+
+      function updateColor() {
+        const red = redInput.value;
+        const green = greenInput.value;
+        const blue = blueInput.value;
+        const rgb = `rgb(${red}, ${green}, ${blue})`;
+        colorPreview.style.backgroundColor = rgb;
+        rgbValues.textContent = `${red}, ${green}, ${blue}`;
+        redValueInput.value = red;
+        greenValueInput.value = green;
+        blueValueInput.value = blue;
+        
+      }
+
+      function updateColorFromTextInputs() {
+        const red = parseInt(redValueInput.value) || 0;
+        const green = parseInt(greenValueInput.value) || 0;
+        const blue = parseInt(blueValueInput.value) || 0;
+        redInput.value = red;
+        greenInput.value = green;
+        blueInput.value = blue;
+        updateColor();
+        
+      }
+
+      redInput.addEventListener("input", updateColor);
+      greenInput.addEventListener("input", updateColor);
+      blueInput.addEventListener("input", updateColor);
+      redValueInput.addEventListener("input", updateColorFromTextInputs);
+      greenValueInput.addEventListener("input", updateColorFromTextInputs);
+      blueValueInput.addEventListener("input", updateColorFromTextInputs);
+    </script>
+  </body>
+</html>

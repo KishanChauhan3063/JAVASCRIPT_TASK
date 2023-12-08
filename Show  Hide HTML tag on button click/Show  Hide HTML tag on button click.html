@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      button {
+        margin-top: 50px;
+        font-size: 20px;
+        background: blue;
+        color: white;
+        padding: 8px 50px;
+      }
+
+      p {
+        color: red;
+        font-size: 30px;    
+        margin-top: 200px;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+
+  <body>
+    <center>
+      <p id="p"></p>
+      <button onclick="show()">Show</button>
+      <button onclick="hide()">Hide</button>
+    </center>
+    <script>
+      function show() {
+        var taxt = "You can show and hide using button.";
+        document.getElementById("p").innerHTML = taxt;
+      }
+      function hide() {
+        var taxt = "You can show and hide using button.";
+        document.getElementById("p").innerHTML = "";
+      }
+    </script>
+  </body>
+</html>
